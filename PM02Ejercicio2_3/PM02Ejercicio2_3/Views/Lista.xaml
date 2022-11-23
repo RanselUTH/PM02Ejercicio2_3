@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PM02Ejercicio2_3.Views.Lista">
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame BackgroundColor="#2196F3" 
+                   Padding="24" 
+                   CornerRadius="0">
+
+                <Label Text="Lista Audios" 
+                       HorizontalTextAlignment="Center" 
+                       TextColor="White" 
+                       FontSize="36"/>
+            </Frame>
+            <Label Text="Deslizar el audio para Borrar o Reproducir" 
+                       HorizontalTextAlignment="Center" 
+                       TextColor="White" 
+                   Margin="10"
+                       FontSize="18"/>
+
+            <ListView x:Name="Lista_Audios" 
+                      Margin="30"
+                      ItemTapped="Lista_Audios_ItemTapped">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <SwipeView SwipeEnded="SwipeView_SwipeEnded">
+                                <SwipeView.RightItems>
+                                    <SwipeItem x:Name="B_Play" 
+                                               Text="Reproducir"                                              
+                                               BackgroundColor = "LimeGreen" 
+                                               Invoked="B_Play_Invoked">
+                                    </SwipeItem>
+                                    <SwipeItem x:Name="B_Delete" 
+                                               Text="Borrar"
+                                               BackgroundColor="Red" 
+                                               Invoked="B_Delete_Invoked">
+
+                                    </SwipeItem>
+                                </SwipeView.RightItems>
+                                <StackLayout>
+                                    <Grid>
+                                        <Label Grid.Column="0"
+                                               Text="{Binding id}"></Label>
+                                        <Label Grid.Column="1"
+                                               Text="{Binding fecha}"></Label>
+                                        <Label Grid.Column="2"
+                                               Text="{Binding descripcion}"></Label>
+                                    </Grid>
+
+                                </StackLayout>
+                            </SwipeView>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
